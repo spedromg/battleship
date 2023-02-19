@@ -8,6 +8,7 @@ function startBattheship() {
   var errors = 0;
   var isSunk = false; // flag
   var guesses = 0;
+  var optionNumbers = []; // save numbers guess
 
   while (isSunk == false) {
     guesses = guesses + 1;
@@ -16,25 +17,31 @@ function startBattheship() {
     if (optionNumber < 0 || optionNumber > 6) {
       alert('Please, enter a valid cell number!');
     } else {
-      if (
-        optionNumber == location1 ||
-        optionNumber == location2 ||
-        optionNumber == location3
-      ) {
-        alert('HIT!!!');
-        hits = hits + 1;
-
-        if (hits == 3) {
-          isSunk = true;
-          alert('You sank my battleship.');
-        }
+      if (optionNumbers.includes(optionNumber)) {
+        alert('This number has already been used .... ');
       } else {
-        alert('MISS!!!');
-        errors = errors + 1;
+        optionNumbers.push(optionNumber);
 
-        if (errors == 3) {
-          alert('You lost!!!');
-          isSunk = true;
+        if (
+          optionNumber == location1 ||
+          optionNumber == location2 ||
+          optionNumber == location3
+        ) {
+          alert('HIT!!!');
+          hits = hits + 1;
+
+          if (hits == 3) {
+            isSunk = true;
+            alert('You sank my battleship.');
+          }
+        } else {
+          alert('MISS!!!');
+          errors = errors + 1;
+
+          if (errors == 3) {
+            alert('You lost!!!');
+            isSunk = true;
+          }
         }
       }
     }
