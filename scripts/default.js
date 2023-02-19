@@ -14,7 +14,7 @@ function startBattheship() {
     guesses = guesses + 1;
     optionNumber = prompt('Ready, aim, fire! (enter a number from 0 a 6):');
 
-    if (optionNumber < 0 || optionNumber > 6) {
+    if (optionNumber < 0 || optionNumber > 6 || optionNumber == '') {
       alert('Please, enter a valid cell number!');
     } else {
       if (optionNumbers.includes(optionNumber)) {
